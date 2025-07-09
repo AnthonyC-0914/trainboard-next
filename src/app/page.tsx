@@ -1,7 +1,21 @@
+import {AllStations, getAllStations} from "@/fetchFuncs/getAllStations";
+import Link from "next/link";
+import React from "react";
 
-export default function Home() {
+export default async function Home() {
 
-    const stationCodes = ["KGX","EDB"];
+    const allStations: AllStations | null = await getAllStations();
+
+    const  StationInfo : React.FC<{crs:string, name:string}> =({crs, name}) => {
+        if (crs === null) {
+            return;
+        }
+        return (
+            <>
+                <Link href={`/station/${crs}`}> {crs} </Link> : {name} <br></br>
+            </>
+        )
+    }
 
     return (
         <>
@@ -10,14 +24,10 @@ export default function Home() {
             </div>
             <div>
                 I&apos;m a simple train board, short and lacking innovation.
-            <div
-                className="">
-                {stationCodes.map((stationName) => (
-                    <div className={"flex flex-row gap-4"} key={stationName}>
-                        <div>Station Code:</div>
-                        <div>{stationName}</div>
-                    </div>
-                ))}
+            <div>
+                {allStations?.stations.map((station) => (
+                    <StationInfo key={station.id} crs={station.crs} name={station.name} />)
+                )}
             </div>
             </div>
         </>
