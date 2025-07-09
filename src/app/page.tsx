@@ -1,4 +1,5 @@
 import {AllStations, getAllStations} from "@/fetchFuncs/getAllStations";
+import Link from "next/link";
 
 export default async function Home() {
 
@@ -10,7 +11,7 @@ export default async function Home() {
         }
         return (
             <>
-                <a href={`http://localhost:3001/station/${crs}`}> {crs} </a> : {stationName} <br></br>
+                <Link href={`/station/${crs}`}> {crs} </Link> : {stationName} <br></br>
             </>
         )
     }
