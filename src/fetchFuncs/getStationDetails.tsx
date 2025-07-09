@@ -7,7 +7,7 @@ export type StationDetails = {
 
 export async function getStationDetails(crs: string) {
     const data = await fetch(process.env["urlBase"]! + `stationDetails/${crs}`, {
-        headers: headers,
+        headers: headers(),
     });
 
     if (!data.ok) {

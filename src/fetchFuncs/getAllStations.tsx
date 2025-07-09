@@ -12,7 +12,7 @@ type StationIDInfo = {
 
 export async function getAllStations() {
     const data = await fetch(process.env["urlBase"]! + `stations`, {
-        headers: headers,
+        headers: headers(),
     });
 
     if (!data.ok) {
