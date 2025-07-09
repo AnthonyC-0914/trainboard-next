@@ -1,4 +1,4 @@
-export type stationDetails = {
+export type StationDetails = {
     location:
         { postCode: string, addressLines: string }
 }
@@ -15,6 +15,6 @@ export async function getStationDetails(crs: string) {
         return null
     }
 
-    const stationDetails: stationDetails = await data.json();
+    const stationDetails: StationDetails = await data.json();
     return stationDetails;
 }

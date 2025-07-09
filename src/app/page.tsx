@@ -1,7 +1,17 @@
+import {AllStations, getAllStations} from "@/fetchFuncs/getAllStations";
 
-export default function Home() {
+export default async function Home() {
 
-    const stationCodes = ["KGX","EDB"];
+    const allStations: AllStations | null = await getAllStations();
+
+    function stationInfoDiv(id: number, crs: string, stationName: string) {
+        if (crs === null) {
+            return
+        }
+        return (
+            <div key={id}> {crs} : {stationName}</div>
+        )
+    }
 
     return (
         <>
@@ -12,11 +22,8 @@ export default function Home() {
                 I&apos;m a simple train board, short and lacking innovation.
             <div
                 className="">
-                {stationCodes.map((stationName) => (
-                    <div className={"flex flex-row gap-4"} key={stationName}>
-                        <div>Station Code:</div>
-                        <div>{stationName}</div>
-                    </div>
+                {allStations?.stations.map((station) => (
+                    stationInfoDiv(station.id, station.crs, station.name)
                 ))}
             </div>
             </div>
