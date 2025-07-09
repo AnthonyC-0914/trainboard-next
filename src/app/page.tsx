@@ -9,7 +9,9 @@ export default async function Home() {
             return
         }
         return (
-            <div key={id}> {crs} : {stationName}</div>
+            <>
+                <a href={`http://localhost:3001/station/${crs}`}> {crs} </a> : {stationName} <br></br>
+            </>
         )
     }
 
