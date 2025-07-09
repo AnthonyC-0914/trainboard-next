@@ -1,4 +1,4 @@
-import { getStationDetails } from "../../../../fetchFuncs/getStationDetails";
+import { getStationDetails } from "@/fetchFuncs/getStationDetails";
 
 export default async function stationPage(
     {params}: {params: Promise<{ crs: string }>}) {
