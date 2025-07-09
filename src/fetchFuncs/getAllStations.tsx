@@ -1,4 +1,4 @@
-import {headers} from "@/fetchFuncs/header";
+import {getHeadersWithApiKey} from "@/fetchFuncs/header";
 
 export type AllStations = {
     stations: StationIDInfo[]
@@ -11,8 +11,8 @@ type StationIDInfo = {
 }
 
 export async function getAllStations() {
-    const data = await fetch(process.env["urlBase"]! + `stations`, {
-        headers: headers(),
+    const data = await fetch(`${process.env["urlBase"]!}stations`, {
+        headers: getHeadersWithApiKey(),
     });
 
     if (!data.ok) {

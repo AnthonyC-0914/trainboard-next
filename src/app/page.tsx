@@ -24,8 +24,7 @@ export default async function Home() {
             </div>
             <div>
                 I&apos;m a simple train board, short and lacking innovation.
-            <div
-                className="">
+            <div>
                 {allStations?.stations.map((station) => (
                     <StationInfo key={station.id} crs={station.crs} name={station.name} />)
                 )}
