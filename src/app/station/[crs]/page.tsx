@@ -5,12 +5,19 @@ export default async function stationPage(
 
     const {crs} = await params;
     const stationDetails = await getStationDetails(crs);
-    console.log(stationDetails)
+
+    if (stationDetails === null) {
+        return (
+            <>
+            Error: Station does not exist.
+            </>
+        )
+    }
 
     return (
         <>
-            <div>Welcome to the details page for {crs}.</div>
-            <div>Postcode: {stationDetails.location.postCode}.</div>   
+            <div>Welcome to the details page for {crs.toUpperCase()} ({stationDetails.location.addressLines.split("<br>")[0]}).</div>
+            <div>Postcode: {stationDetails.location.postCode}.</div>
         </>
     );
 }

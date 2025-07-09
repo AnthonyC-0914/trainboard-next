@@ -6,6 +6,10 @@ export async function getStationDetails(crs: string) {
         headers: headers,
     });
 
+    if (!data.ok) {
+        return null
+    }
+
     const stationDetails = await data.json();
-    return stationDetails
+    return stationDetails;
 }
