@@ -16,7 +16,7 @@ export async function getAllStations() {
     });
 
     if (!data.ok) {
-        return null
+        return null;
     }
 
     const stationDetails: AllStations = await data.json();

@@ -1,17 +1,18 @@
 import {AllStations, getAllStations} from "@/fetchFuncs/getAllStations";
 import Link from "next/link";
+import React from "react";
 
 export default async function Home() {
 
     const allStations: AllStations | null = await getAllStations();
 
-    function stationInfoDiv(id: number, crs: string, stationName: string) {
+    const  StationInfo : React.FC<{crs:string, name:string}> =({crs, name}) => {
         if (crs === null) {
-            return
+            return;
         }
         return (
             <>
-                <Link href={`/station/${crs}`}> {crs} </Link> : {stationName} <br></br>
+                <Link href={`/station/${crs}`}> {crs} </Link> : {name} <br></br>
             </>
         )
     }
@@ -26,8 +27,8 @@ export default async function Home() {
             <div
                 className="">
                 {allStations?.stations.map((station) => (
-                    stationInfoDiv(station.id, station.crs, station.name)
-                ))}
+                    <StationInfo key={station.id} crs={station.crs} name={station.name} />)
+                )}
             </div>
             </div>
         </>
