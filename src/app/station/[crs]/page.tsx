@@ -1,10 +1,10 @@
-import { getStationDetails } from "@/fetchFuncs/getStationDetails";
+import {getStationDetails, stationDetails} from "@/fetchFuncs/getStationDetails";
 
 export default async function stationPage(
     {params}: {params: Promise<{ crs: string }>}) {
 
     const {crs} = await params;
-    const stationDetails = await getStationDetails(crs);
+    const stationDetails: stationDetails | null = await getStationDetails(crs);
 
     if (stationDetails === null) {
         return (
