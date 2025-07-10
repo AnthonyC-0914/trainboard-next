@@ -1,4 +1,6 @@
-import {getHeadersWithApiKey} from "@/fetchFuncs/header";
+import {getHeadersWithApiKey} from "@/apiFetchFunctions/header";
+import {getUrlBase} from "@/apiFetchFunctions/getUrlBase";
+import {notFound} from "next/navigation";
 
 export type StationDetails = {
     location:
@@ -6,12 +8,12 @@ export type StationDetails = {
 }
 
 export async function getStationDetails(crs: string) {
-    const data = await fetch(`${process.env["urlBase"]!}stationDetails/${crs}`, {
+    const data = await fetch(`${getUrlBase()}stationDetails/${crs}`, {
         headers: getHeadersWithApiKey(),
     });
 
     if (!data.ok) {
-        return null
+        notFound();
     }
 
     const stationDetails: StationDetails = await data.json();

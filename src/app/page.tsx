@@ -1,10 +1,10 @@
-import {AllStations, getAllStations} from "@/fetchFuncs/getAllStations";
+import {AllStations, getAllStations} from "@/apiFetchFunctions/getAllStations";
 import Link from "next/link";
 import React from "react";
 
 export default async function Home() {
 
-    const allStations: AllStations | null = await getAllStations();
+    const allStations: AllStations = await getAllStations();
 
     const  StationInfo : React.FC<{crs:string, name:string}> =({crs, name}) => {
         if (crs === null) {
@@ -23,12 +23,9 @@ export default async function Home() {
                 <h1 className={"text-3xl py-3 text-white"}>TrainBoard</h1>
             </div>
             <div>
-                I&apos;m a simple train board, short and lacking innovation.
-            <div>
                 {allStations?.stations.map((station) => (
                     <StationInfo key={station.id} crs={station.crs} name={station.name} />)
                 )}
-            </div>
             </div>
         </>
     );
