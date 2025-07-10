@@ -22,6 +22,5 @@ export async function getStationDepartures(crs: string) {
     }
 
     const stationDepartures: StationDepartures = await data.json();
-    console.log(stationDepartures);
     return stationDepartures;
 }
