@@ -1,4 +1,4 @@
-import {getHeadersWithApiKey} from "@/fetchFuncs/header";
+import {getHeadersWithApiKey} from "@/apiFetchFunctions/header";
 
 export type StationDetails = {
     location:

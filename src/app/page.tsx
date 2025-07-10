@@ -1,4 +1,4 @@
-import {AllStations, getAllStations} from "@/fetchFuncs/getAllStations";
+import {AllStations, getAllStations} from "@/apiFetchFunctions/getAllStations";
 import Link from "next/link";
 import React from "react";
 
