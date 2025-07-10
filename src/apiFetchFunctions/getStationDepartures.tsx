@@ -1,6 +1,6 @@
 import {getHeadersWithApiKey} from "@/apiFetchFunctions/header";
 import {getUrlBase} from "@/apiFetchFunctions/getUrlBase";
-import {redirect, RedirectType} from "next/navigation";
+import {notFound} from "next/navigation";
 
 export type StationDepartures = {
     trainServices: {
@@ -20,7 +20,7 @@ export async function getStationDepartures(crs: string) {
         body: JSON.stringify({crs: crs.toUpperCase()}),
     });
     if (!data.ok) {
-        redirect('/404', RedirectType.push);
+        notFound();
     }
 
     const stationDepartures: StationDepartures = await data.json();
