@@ -22,5 +22,6 @@ export async function getAllStations() {
     }
 
     const stationDetails: AllStations = await data.json();
+    stationDetails.stations.sort((station1, station2) => station1.name.localeCompare(station2.name))
     return stationDetails;
 }

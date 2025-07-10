@@ -6,7 +6,7 @@ export default async function Home() {
 
     const allStations: AllStations = await getAllStations();
 
-    const  StationInfo : React.FC<{crs:string, name:string}> =({crs, name}) => {
+    const StationInfo : React.FC<{crs:string, name:string}> =({crs, name}) => {
         if (crs === null) {
             return;
         }
