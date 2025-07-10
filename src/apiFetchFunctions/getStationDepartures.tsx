@@ -1,4 +1,6 @@
 import {getHeadersWithApiKey} from "@/apiFetchFunctions/header";
+import {getUrlBase} from "@/apiFetchFunctions/getUrlBase";
+import {redirect, RedirectType} from "next/navigation";
 
 export type StationDepartures = {
     trainServices: {
@@ -12,13 +14,13 @@ export type StationDepartures = {
 }
 
 export async function getStationDepartures(crs: string) {
-    const data = await fetch(`${process.env["urlBase"]!}liveTrainsBoard/departures`, {
+    const data = await fetch(`${getUrlBase()}liveTrainsBoard/departures`, {
         method: "POST",
         headers: getHeadersWithApiKey(),
         body: JSON.stringify({crs: crs.toUpperCase()}),
     });
     if (!data.ok) {
-        return null;
+        redirect('/404', RedirectType.push);
     }
 
     const stationDepartures: StationDepartures = await data.json();

@@ -1,4 +1,6 @@
 import {getHeadersWithApiKey} from "@/apiFetchFunctions/header";
+import {getUrlBase} from "@/apiFetchFunctions/getUrlBase";
+import {redirect, RedirectType} from "next/navigation";
 
 export type AllStations = {
     stations: StationIDInfo[]
@@ -11,12 +13,12 @@ type StationIDInfo = {
 }
 
 export async function getAllStations() {
-    const data = await fetch(`${process.env["urlBase"]!}stations`, {
+    const data = await fetch(`${getUrlBase()}stations`, {
         headers: getHeadersWithApiKey(),
     });
 
     if (!data.ok) {
-        return null;
+        redirect('/404', RedirectType.push);
     }
 
     const stationDetails: AllStations = await data.json();
