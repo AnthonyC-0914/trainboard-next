@@ -19,7 +19,7 @@ export default async function stationPage(
         <>
             <div>Welcome to the details page for {stationName} Station ({crs.toUpperCase()}).</div>
             <div>Postcode: {stationDetails.location.postCode}.</div>
-            <DepartureTable crs={crs} />
+            <div className="flex justify-center"> <DepartureTable crs={crs} /> </div>
         </>
     );
 }
