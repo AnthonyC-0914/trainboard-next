@@ -1,5 +1,5 @@
 import {getStationDepartures, StationDepartures} from "@/apiFetchFunctions/getStationDepartures";
-import {parseISOtoClockTime} from "@/helperFunctions/parseISOtoClockTime";
+import {parseISOtoClockTime} from "@/helperFunctions/parseISO";
 
 export const DepartureTable : React.FC<{crs:string}> = async ({crs}) => {
     const stationDepartures: StationDepartures | null = await getStationDepartures(crs);

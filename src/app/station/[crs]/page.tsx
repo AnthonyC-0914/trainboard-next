@@ -1,7 +1,7 @@
 import {getStationDetails, StationDetails} from "@/apiFetchFunctions/getStationDetails";
 import {AllStations, getAllStations} from "@/apiFetchFunctions/getAllStations";
 import React from "react";
-import {DepartureTable} from "@/customComponents/departureTable";
+import {DepartureTable} from "@/customComponents/DepartureTable";
 import {notFound} from "next/navigation";
 
 export default async function stationPage(
@@ -17,9 +17,8 @@ export default async function stationPage(
 
     return (
         <>
-            <div>Welcome to the details page for {stationName} Station ({crs.toUpperCase()}).</div>
-            <div>Postcode: {stationDetails.location.postCode}.</div>
-            <div className="flex justify-center"> <DepartureTable crs={crs} /> </div>
+            <div className="text-3xl text-red-800 font-bold flex justify-center py-5">{stationName} ({crs.toUpperCase()}) live departures</div>
+            <div className="flex justify-center"><DepartureTable crs={crs} /></div>
         </>
     );
 }
