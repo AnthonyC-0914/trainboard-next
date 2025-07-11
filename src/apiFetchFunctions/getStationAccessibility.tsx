@@ -3,16 +3,16 @@ import {getUrlBase} from "@/apiFetchFunctions/getUrlBase";
 import {notFound} from "next/navigation";
 
 export type StationAccessibility = {
-    staffHelpAvailable: {
+    staffHelpAvailable?: {
         generalInfo: string,
     },
-    accessibleTicketMachines: {
+    accessibleTicketMachines?: {
         generalInfo: string,
     },
-    nationalKeyToilets: {
+    nationalKeyToilets?: {
         locationInfo: string,
     },
-    stepFreeAccess: {
+    stepFreeAccess?: {
         generalInfo: string
     }
 }

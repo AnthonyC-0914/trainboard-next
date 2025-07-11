@@ -3,11 +3,12 @@ import {getStationAccessibility, StationAccessibility} from "@/apiFetchFunctions
 import DOMPurify from "isomorphic-dompurify";
 
 export const StationAccessibilityDetails : React.FC<{crs:string}> = async ({crs}) => {
-    const stationAccessibility: StationAccessibility = await getStationAccessibility(crs);
-    const staffHelpText: string = DOMPurify.sanitize(stationAccessibility.staffHelpAvailable.generalInfo);
-    const ticketMachinesInfo: string = DOMPurify.sanitize(stationAccessibility.accessibleTicketMachines.generalInfo);
-    const keyToiletsLocations: string = DOMPurify.sanitize(stationAccessibility.nationalKeyToilets.locationInfo);
-    const stepFreeAccessInfo: string = DOMPurify.sanitize(stationAccessibility.stepFreeAccess.generalInfo);
+    const {staffHelpAvailable, accessibleTicketMachines, nationalKeyToilets, stepFreeAccess}: StationAccessibility = await getStationAccessibility(crs);
+
+    const staffHelpText: string | undefined = staffHelpAvailable && DOMPurify.sanitize(staffHelpAvailable.generalInfo);
+    const ticketMachinesInfo: string | undefined = accessibleTicketMachines && DOMPurify.sanitize(accessibleTicketMachines.generalInfo);
+    const keyToiletsLocations: string | undefined = nationalKeyToilets && DOMPurify.sanitize(nationalKeyToilets.locationInfo);
+    const stepFreeAccessInfo: string | undefined = stepFreeAccess && DOMPurify.sanitize(stepFreeAccess.generalInfo);
 
     return (
         <>
@@ -15,16 +16,24 @@ export const StationAccessibilityDetails : React.FC<{crs:string}> = async ({crs}
                 <h1 className="text-xl font-bold"> Accessibility Details </h1>
 
                 <strong> Staff Help: </strong> <br/>
-                <div dangerouslySetInnerHTML={{ __html: staffHelpText }} /> <br/>
+                {staffHelpText && (
+                    <div dangerouslySetInnerHTML={{ __html: staffHelpText}} />
+                )} <br/>
 
                 <strong> Ticket Machines: </strong> <br/>
-                <div dangerouslySetInnerHTML={{ __html: ticketMachinesInfo }} /> <br/>
+                {ticketMachinesInfo && (
+                    <div dangerouslySetInnerHTML={{ __html: ticketMachinesInfo}} />
+                )} <br/>
 
                 <strong> National Key Toilets: </strong> <br/>
-                <div dangerouslySetInnerHTML={{ __html: keyToiletsLocations }} /> <br/>
+                {keyToiletsLocations && (
+                    <div dangerouslySetInnerHTML={{ __html: keyToiletsLocations}} />
+                )} <br/>
 
                 <strong> Step-Free Access: </strong> <br/>
-                <div dangerouslySetInnerHTML={{ __html: stepFreeAccessInfo }} />
+                {stepFreeAccessInfo && (
+                    <div dangerouslySetInnerHTML={{ __html: stepFreeAccessInfo}} />
+                )} <br/>
             </div>
         </>
     )
