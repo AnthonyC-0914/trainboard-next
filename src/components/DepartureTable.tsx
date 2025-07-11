@@ -3,7 +3,7 @@ import {getStationDepartures, StationDepartures} from "@/apiFetchFunctions/getSt
 import {parseISOtoClockTime} from "@/helperFunctions/parseISO";
 
 export const DepartureTable : React.FC<{crs:string}> = async ({crs}) => {
-    const stationDepartures: StationDepartures | null = await getStationDepartures(crs);
+    const stationDepartures: StationDepartures = await getStationDepartures(crs);
     return (
         <table className="table-auto border-red-800 text-left">
             <thead className="text-red-800 border">
@@ -16,7 +16,7 @@ export const DepartureTable : React.FC<{crs:string}> = async ({crs}) => {
             </tr>
             </thead>
             <tbody className="bg-gray-100 border-l border-r border-gray-300">
-            {stationDepartures?.trainServices.map((departure) =>
+            {stationDepartures?.trainServices.map((departure ) =>
                 <tr key={departure.rid} className="text-left border-b-1 border-gray-300 pt-5">
                     <td className="font-bold p-1">{parseISOtoClockTime(departure.displayScheduledTime)}</td>
                     <td>{departure.destination[0].name} ({departure.destination[0].crs.toUpperCase()})</td>
