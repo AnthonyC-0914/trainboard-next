@@ -13,7 +13,7 @@ export type StationDepartures = {
     }[]
 }
 
-export async function getStationDepartures(crs: string) {
+export async function getStationDepartures(crs: string): Promise<StationDepartures> {
     const data = await fetch(`${getUrlBase()}liveTrainsBoard/departures`, {
         method: "POST",
         headers: getHeadersWithApiKey(),
@@ -23,6 +23,5 @@ export async function getStationDepartures(crs: string) {
         notFound();
     }
 
-    const stationDepartures: StationDepartures = await data.json();
-    return stationDepartures;
+    return data.json();
 }

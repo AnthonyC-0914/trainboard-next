@@ -12,7 +12,7 @@ type StationIDInfo = {
     crs: string
 }
 
-export async function getAllStations() {
+export async function getAllStations(): Promise<AllStations> {
     const data = await fetch(`${getUrlBase()}stations`, {
         headers: getHeadersWithApiKey(),
     });
