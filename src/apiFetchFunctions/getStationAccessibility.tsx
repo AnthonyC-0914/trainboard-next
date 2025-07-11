@@ -38,7 +38,7 @@ type Facilities = {
     }
 }
 
-export async function getStationAccessibility(crs: string) {
+export async function getStationAccessibility(crs: string): Promise<StationAccessibility> {
     const data = await fetch(`${getUrlBase()}stationDetails/${crs}`, {
         headers: getHeadersWithApiKey(),
     });
@@ -48,6 +48,5 @@ export async function getStationAccessibility(crs: string) {
     }
 
     const rawFacilitiesData: Facilities = await data.json();
-    const stationAccessibility: StationAccessibility = rawFacilitiesData.facilities.accessibility;
-    return stationAccessibility;
+    return rawFacilitiesData.facilities.accessibility;
 }
