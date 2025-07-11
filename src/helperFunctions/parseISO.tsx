@@ -5,7 +5,8 @@ export function parseISOtoClockTime(ISOString: string): string {
     return `${hours}:${minutes}`;
 }
 
-export function parseISOtoDate(ISOString: string): string {
-    const fullTime: Date = new Date(ISOString);
-    return `${fullTime.getDay()}`;
-}
+// export function parseISOtoDate(ISOString: string): string {
+//     const fullTime: Date = new Date(ISOString);
+//     return `${fullTime.getDay()}`;
+// }
+// don't need?
