@@ -36,7 +36,6 @@ export const StationAccessibilityDetails : React.FC<{crs:string}> = async ({crs}
                     </>
                 )}
 
-
                 {stepFreeAccessInfo && (
                     <>
                         <strong> Step-Free Access: </strong> <br/>
