@@ -18,7 +18,7 @@ export default async function stationPage(
         <>
             <div className="text-3xl text-red-800 font-bold flex justify-center py-5">{stationName} ({crs.toUpperCase()}) live departures</div>
             <div className="flex">
-                <div className="px-30 shrink"> <StationAccessibilityDetails crs={crs}/> </div>
+                <div className="px-30 shrink"> <StationAccessibilityDetails crs={crs} /> </div>
                 <div className="pr-30 flex-none"> <DepartureTable crs={crs} /> </div>
             </div>
         </>
