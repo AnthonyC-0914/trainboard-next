@@ -23,5 +23,5 @@ export async function getStationDepartures(crs: string): Promise<StationDepartur
         notFound();
     }
 
-    return await data.json();
+    return data.json();
 }
