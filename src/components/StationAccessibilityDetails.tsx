@@ -15,25 +15,34 @@ export const StationAccessibilityDetails : React.FC<{crs:string}> = async ({crs}
             <div className="rounded-xl border border-red-800 border-solid bg-gray-100 p-2">
                 <h1 className="text-xl font-bold"> Accessibility Details </h1>
 
-                <strong> Staff Help: </strong> <br/>
                 {staffHelpText && (
-                    <div dangerouslySetInnerHTML={{ __html: staffHelpText}} />
-                )} <br/>
+                    <>
+                        <strong> Staff Help: </strong> <br/>
+                        <div dangerouslySetInnerHTML={{ __html: staffHelpText}} /> <br/>
+                    </>
+                )}
 
-                <strong> Ticket Machines: </strong> <br/>
                 {ticketMachinesInfo && (
-                    <div dangerouslySetInnerHTML={{ __html: ticketMachinesInfo}} />
-                )} <br/>
+                    <>
+                        <strong> Ticket Machines: </strong> <br/>
+                        <div dangerouslySetInnerHTML={{ __html: ticketMachinesInfo}} /> <br/>
+                    </>
+                )}
 
-                <strong> National Key Toilets: </strong> <br/>
                 {keyToiletsLocations && (
-                    <div dangerouslySetInnerHTML={{ __html: keyToiletsLocations}} />
-                )} <br/>
+                    <>
+                        <strong> National Key Toilets: </strong> <br/>
+                        <div dangerouslySetInnerHTML={{ __html: keyToiletsLocations}} /> <br/>
+                    </>
+                )}
 
-                <strong> Step-Free Access: </strong> <br/>
+
                 {stepFreeAccessInfo && (
-                    <div dangerouslySetInnerHTML={{ __html: stepFreeAccessInfo}} />
-                )} <br/>
+                    <>
+                        <strong> Step-Free Access: </strong> <br/>
+                        <div dangerouslySetInnerHTML={{ __html: stepFreeAccessInfo}} />
+                    </>
+                )}
             </div>
         </>
     )

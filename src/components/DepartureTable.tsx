@@ -20,7 +20,7 @@ export const DepartureTable : React.FC<{crs:string}> = async ({crs}) => {
                 <tr key={departure.rid} className="text-left border-b-1 border-gray-300 pt-5">
                     <td className="font-bold p-1">{parseISOtoClockTime(departure.displayScheduledTime)}</td>
                     <td>{departure.destination[0].name} ({departure.destination[0].crs.toUpperCase()})</td>
-                    <td>{departure.platform ?? `No platform yet`}</td>
+                    <td>{departure.platform ?? `-`}</td>
                     <td>{fixOnTimeStatusText(departure.status)}</td>
                     <td>{departure.trainOperator.name}</td>
                 </tr>
