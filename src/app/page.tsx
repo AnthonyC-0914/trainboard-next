@@ -1,9 +1,9 @@
-import {AllStations, getAllStations} from "@/apiFetchFunctions/getAllStations";
+import {StationIDInfo, getAllStations} from "@/apiFetchFunctions/getAllStations";
 import {StationsDisplay} from "@/components/StationsDisplay";
 
 export default async function Home() {
 
-    const allStations: AllStations = await getAllStations();
+    const allStations: StationIDInfo[] = await getAllStations();
 
     return (
         <>
