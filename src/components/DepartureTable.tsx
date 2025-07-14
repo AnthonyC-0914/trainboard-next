@@ -30,11 +30,5 @@ export const DepartureTable : React.FC<{crs:string}> = async ({crs}) => {
     )}
 
 function fixStatusText(status: string) : string {
-    if (status === "OnTime") {
-        return "On Time";
-    }
-    if (status === "PartiallyCancelled") {
-        return "Partially Cancelled";
-    }
-    return status;
+    return status.split(/(?<![A-Z])(?=[A-Z])/).join(' ');
 }
