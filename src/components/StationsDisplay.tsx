@@ -13,7 +13,9 @@ export const StationsDisplay: React.FC<{allStations: StationIDInfo[]}> = ({allSt
     }
 
     useEffect(() => {
-        setStationsToDisplay(allStations.filter((station) => station.crs.startsWith(userSearchValue.toUpperCase())));
+        setStationsToDisplay(allStations.filter((station) =>
+            station.crs.startsWith(userSearchValue.toUpperCase()) ||
+            station.name.toUpperCase().startsWith(userSearchValue.toUpperCase())));
     }, [userSearchValue, allStations]);
 
     return (
