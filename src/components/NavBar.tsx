@@ -4,9 +4,10 @@ import Link from "next/link";
 export const NavBar : React.FC = () => {
     const date = new Date(Date.now()).toDateString();
     return (
-        <div className={"flex justify-between items-center bg-red-800 py-3 font-sans"}>
-            <div className="float-left">
-                <Link href='/' className={"text-3xl py-3 text-white pl-5 text-left"}>DefNotLNERBoard</Link>
+        <div className={"container flex justify-between items-center bg-red-800 py-3 font-sans"}>
+            <div className="text-white">
+                <Link href='/' className="text-3xl py-3 pl-5 ">DefNotLNERBoard</Link>
+                <Link href='/fare-search' className="pl-5"> Fare Search </Link>
             </div>
             <div className="text-white float-right pr-3">
                 {date}
