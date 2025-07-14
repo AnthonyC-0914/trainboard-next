@@ -1,4 +1,4 @@
-import {AllStations, getAllStations} from "@/apiFetchFunctions/getAllStations";
+import {StationIDInfo, getAllStations} from "@/apiFetchFunctions/getAllStations";
 import React from "react";
 import {notFound} from "next/navigation";
 import {DepartureTable} from "@/components/DepartureTable";
@@ -7,8 +7,8 @@ import { StationAccessibilityDetails } from "@/components/StationAccessibilityDe
 export default async function stationPage(
     {params}: {params: Promise<{ crs: string }>}) {
     const {crs} = await params;
-    const allStations: AllStations = await getAllStations();
-    const stationName: string | undefined = allStations.stations.find((station) => station.crs === crs)?.name;
+    const allStations: StationIDInfo[] = await getAllStations();
+    const stationName: string | undefined = allStations.find((station) => station.crs === crs)?.name;
 
     if (stationName === undefined) {
         notFound();
