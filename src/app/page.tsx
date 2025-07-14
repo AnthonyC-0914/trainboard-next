@@ -1,7 +1,6 @@
 import {AllStations, getAllStations} from "@/apiFetchFunctions/getAllStations";
 import Link from "next/link";
-import React from "react";
-import {UserInput} from "@/components/StationSearchBar"
+import {StationSearchBar} from "@/components/StationSearchBar"
 
 export default async function Home() {
 
@@ -27,7 +26,7 @@ export default async function Home() {
                 This homepage is quite &lsquo;minimalistic&rsquo;; please search for a station. <br/>
             </div>
             <div className="flex justify-center py-1">
-                <UserInput />
+                <StationSearchBar />
             </div>
             <div>
                 {allStations?.stations.map((station) => (
