@@ -3,6 +3,7 @@
 import {StationIDInfo} from "@/apiFetchFunctions/getAllStations";
 import {StationInfo} from "@/components/StationInfo";
 import React, {useEffect, useState} from "react";
+import {filterStationsByCRSAndName} from "@/helperFunctions/filterStationsByCRSAndName";
 
 export const StationsDisplay: React.FC<{allStations: StationIDInfo[]}> = ({allStations}) => {
     const [userSearchValue, setUserSearchValue] = useState('');
@@ -13,21 +14,19 @@ export const StationsDisplay: React.FC<{allStations: StationIDInfo[]}> = ({allSt
     }
 
     useEffect(() => {
-        setStationsToDisplay(allStations.filter((station) =>
-            station.crs.startsWith(userSearchValue.toUpperCase()) ||
-            station.name.toUpperCase().startsWith(userSearchValue.toUpperCase())));
+        setStationsToDisplay(filterStationsByCRSAndName(allStations, userSearchValue));
     }, [userSearchValue, allStations]);
 
     return (
         <>
             <div className="flex justify-center py-1">
-                    <input
-                        type="text"
-                        value={userSearchValue}
-                        onChange={handleChange}
-                        className="border border-red-800 w-70 scale-150"
-                        placeholder="Search for Station CRS/Name"
-                    />
+                <input
+                    type="text"
+                    value={userSearchValue}
+                    onChange={handleChange}
+                    className="border border-red-800 w-70 scale-150"
+                    placeholder="Search for Station CRS/Name"
+                />
             </div>
             <div>
                 {stationsToDisplay.map((station) => (
