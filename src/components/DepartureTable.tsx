@@ -1,8 +1,14 @@
 import React from "react";
 import {getStationDepartures, StationDepartures} from "@/apiFetchFunctions/getStationDepartures";
 import {parseISOtoClockTime} from "@/helperFunctions/parseISO";
+import {PropagationAPI} from "@opentelemetry/api";
 
-export const DepartureTable : React.FC<{crs:string}> = async ({crs}) => {
+export type Prop = {
+    x: string;
+    y: number;
+}
+
+export const DepartureTable = async ({x, y} : Prop) => {
     const stationDepartures: StationDepartures = await getStationDepartures(crs);
     return (
         <table className="table-auto border-red-800 text-left">
